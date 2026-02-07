@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>प्रवेश | JRC स्कूल, हरही बाज़ार बस्ती</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="bg-blue-900 text-white">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <div class="flex items-center space-x-3">
+        <div class="bg-yellow-400 text-blue-900 font-extrabold rounded-full h-10 w-10 flex items-center justify-center text-lg">J</div>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest">J.R.C. Inter College</p>
+          <p class="text-xs text-gray-200">Harahi Bazar, Basti (U.P.)</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="school.html" class="hover:text-yellow-300">होम</a>
+        <a href="about.html" class="hover:text-yellow-300">हमारे बारे में</a>
+        <a href="admissions.html" class="text-yellow-300 font-semibold">प्रवेश</a>
+        <a href="fees.html" class="hover:text-yellow-300">फीस संरचना</a>
+        <a href="student-login.html" class="hover:text-yellow-300">छात्र पोर्टल</a>
+        <a href="ai-assistant.html" class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full hover:bg-yellow-300 transition">AI सहायक</a>
+        <a href="admin-login.html" class="text-gray-300 hover:text-yellow-300 border border-gray-600 px-3 py-1 rounded-full transition">🔐 Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-12 space-y-12">
+    <section class="fade-in">
+      <h1 class="text-4xl font-extrabold text-blue-800 mb-4 fade-in">प्रवेश</h1>
+      <p class="text-lg leading-relaxed mb-2">
+        J.R.C. इंटर कॉलेज में नर्सरी से कक्षा 12<sup>वीं</sup> तक की कक्षाओं के लिए प्रवेश खुले हैं, सीटों की उपलब्धता और पात्रता मानदंडों की पूर्ति के अधीन।
+      </p>
+      <p class="text-lg leading-relaxed">
+        हम जे.आर.सी. इंटर कॉलेज में नर्सरी से कक्षा 12 तक प्रवेश प्रदान करते हैं (सीट की उपलब्धता के अनुसार)। प्रवेश
+        मेरिट, इंटरव्यू और दस्तावेज़ सत्यापन के आधार पर होता है।
+      </p>
+    </section>
+
+    <section class="grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <h2 class="text-2xl font-bold text-blue-700 mb-3">प्रवेश प्रक्रिया</h2>
+        <p class="mb-3">
+          <a href="admission-form.pdf" download class="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+            📄 प्रवेश फॉर्म PDF डाउनलोड करें
+          </a>
+        </p>
+        <ol class="list-decimal list-inside space-y-2 text-base">
+          <li>स्कूल कार्यालय से प्रवेश फॉर्म लें या ऊपर दिए लिंक से PDF डाउनलोड करें।</li>
+          <li>सभी विवरण सावधानी से भरें और आवश्यक दस्तावेज़ संलग्न करें।</li>
+          <li>दिए गए तारीखों के भीतर स्कूल कार्यालय में फॉर्म जमा करें।</li>
+          <li>बातचीत / प्रवेश परीक्षा में भाग लें (यदि लागू हो)।</li>
+          <li>चयन पर, फीस का भुगतान पूरा करें और प्रवेश की पुष्टि करें।</li>
+        </ol>
+
+        <h2 class="text-2xl font-bold text-blue-700 mb-3 mt-6">आवश्यक दस्तावेज़</h2>
+        <ul class="list-disc list-inside space-y-2 text-base">
+          <li>जन्म प्रमाणपत्र (नर्सरी और प्राथमिक कक्षाओं के लिए)</li>
+          <li>पिछली कक्षा की अंक पत्रिका / प्रगति रिपोर्ट</li>
+          <li>पिछले स्कूल से स्थानांतरण प्रमाणपत्र (T.C.)</li>
+          <li>छात्र और माता-पिता का आधार कार्ड</li>
+          <li>पासपोर्ट आकार की तस्वीरें (छात्र और माता-पिता)</li>
+        </ul>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg p-6 card-hover fade-in">
+        <h2 class="text-2xl font-bold text-blue-700 mb-4 fade-in">ऑनलाइन प्रवेश पूछताछ</h2>
+        <p class="text-sm mb-4 text-gray-700">
+          स्कूल को एक पूछताछ भेजने के लिए इस फॉर्म को भरें। त्वरित सहायता के लिए आप स्कूल कार्यालय को भी कॉल कर सकते हैं।
+        </p>
+        <form id="admissionEnquiryForm" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">छात्र का नाम</label>
+            <input type="text" id="studentName" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">प्रवेश के लिए कक्षा</label>
+            <select id="classApplying" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="">कक्षा चुनें</option>
+              <option>Nursery</option>
+              <option>LKG</option>
+              <option>UKG</option>
+              <option>1st</option>
+              <option>2nd</option>
+              <option>3rd</option>
+              <option>4th</option>
+              <option>5th</option>
+              <option>6th</option>
+              <option>7th</option>
+              <option>8th</option>
+              <option>9th</option>
+              <option>10th</option>
+              <option>11th</option>
+              <option>12th</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">माता-पिता का मोबाइल नंबर</label>
+            <input type="tel" id="parentMobile" required pattern="[0-9]{10}" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="10 अंकों का मोबाइल नंबर">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">संदेश / प्रश्न</label>
+            <textarea id="message" rows="3" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="अपना प्रश्न लिखें (वैकल्पिक)"></textarea>
+          </div>
+          <button type="submit" class="btn-pulse w-full bg-blue-700 text-white py-2 rounded-lg font-semibold hover:bg-blue-800 transition">
+            पूछताछ जमा करें
+          </button>
+          <p id="formStatus" class="text-sm mt-2 text-green-600 hidden success-message">धन्यवाद! आपकी पूछताछ दर्ज की गई है।</p>
+          <p class="text-xs text-gray-500 mt-3">नोट: Form सर्वर पर सहेजने के लिए backend चालू रखें — Terminal में <code class="bg-gray-100 px-1 rounded">cd backend && npm run dev</code></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-center text-white py-6 mt-10">
+    <p>© 2025 JRC स्कूल, हरही बाज़ार बस्ती | शिवमणि सिंह द्वारा डिज़ाइन किया गया</p>
+  </footer>
+
+  <!-- JavaScript Files -->
+  <script src="js/main.js"></script>
+  <script src="js/form-handler.js"></script>
+</body>
+</html>
+

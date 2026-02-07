@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>मेरा डैशबोर्ड | JRC स्कूल</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+  <header class="bg-blue-900 text-white">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <div class="flex items-center space-x-3">
+        <div class="bg-yellow-400 text-blue-900 font-extrabold rounded-full h-10 w-10 flex items-center justify-center text-lg">J</div>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest">J.R.C. Inter College</p>
+          <p class="text-xs text-gray-200">छात्र पोर्टल</p>
+        </div>
+      </div>
+      <nav class="flex items-center space-x-4">
+        <span class="text-sm text-gray-200" id="studentNameNav">-</span>
+        <a href="school.html" class="text-gray-300 hover:text-yellow-300 text-sm">होम</a>
+        <button type="button" id="logoutBtn" class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded-lg text-sm">लॉगआउट</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 py-8 w-full">
+    <h1 class="text-2xl font-bold text-blue-800 mb-6">मेरा डैशबोर्ड</h1>
+
+    <!-- Profile Card -->
+    <section class="bg-white rounded-xl shadow-lg p-6 mb-6">
+      <h2 class="text-lg font-semibold text-blue-700 mb-4">मेरा प्रोफाइल</h2>
+      <div id="profileContent" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-700">
+        <p class="text-gray-500">लोड हो रहा है...</p>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="bg-white rounded-xl shadow-lg p-6 mb-6">
+      <h2 class="text-lg font-semibold text-blue-700 mb-4">मेरे परिणाम</h2>
+      <div id="resultContent" class="space-y-4">
+        <p class="text-gray-500">लोड हो रहा है...</p>
+      </div>
+    </section>
+
+    <!-- Fees -->
+    <section class="bg-white rounded-xl shadow-lg p-6 mb-6">
+      <h2 class="text-lg font-semibold text-blue-700 mb-4">मेरी फीस</h2>
+      <div id="feesContent" class="space-y-4">
+        <p class="text-gray-500">लोड हो रहा है...</p>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-lg font-semibold text-blue-700 mb-4">जरूरी लिंक</h2>
+      <div class="flex flex-wrap gap-3">
+        <a href="school.html#news" class="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg hover:bg-blue-200 transition">ताज़ा सूचनाएं</a>
+        <a href="fees.html" class="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg hover:bg-blue-200 transition">फीस संरचना</a>
+        <a href="admissions.html" class="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg hover:bg-blue-200 transition">प्रवेश जानकारी</a>
+        <a href="ai-assistant.html" class="bg-yellow-100 text-blue-800 px-4 py-2 rounded-lg hover:bg-yellow-200 transition">AI सहायक</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-center text-white py-4 text-sm">
+    <p>© 2025 JRC स्कूल, हरही बाज़ार बस्ती</p>
+  </footer>
+
+  <script src="js/student-panel.js"></script>
+  <script>
+    (function() {
+      if (!StudentPanel.isLoggedIn()) {
+        window.location.href = 'student-login.html';
+        return;
+      }
+      StudentPanel.loadDashboard();
+      document.getElementById('logoutBtn').addEventListener('click', function() {
+        StudentPanel.logout();
+        window.location.href = 'student-login.html';
+      });
+    })();
+  </script>
+</body>
+</html>

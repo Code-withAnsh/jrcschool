@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JRC स्कूल, हरही बाज़ार बस्ती</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      background: linear-gradient(to right, #1e3a8a, #2563eb);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+    .hero {
+      background-image: url('');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .overlay {
+      background: rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Top Navbar -->
+  <header class="bg-blue-900 bg-opacity-80 backdrop-filter backdrop-blur sticky top-0 z-20">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <div class="flex items-center space-x-3">
+        <div class="bg-yellow-400 text-blue-900 font-extrabold rounded-full h-10 w-10 flex items-center justify-center text-lg">
+          J
+        </div>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest">J.R.C. Inter College</p>
+          <p class="text-xs text-gray-200">Harahi Bazar, Basti (U.P.)</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="school.html" class="hover:text-yellow-300">होम</a>
+        <a href="about.html" class="hover:text-yellow-300">हमारे बारे में</a>
+        <a href="admissions.html" class="hover:text-yellow-300">प्रवेश</a>
+        <a href="fees.html" class="hover:text-yellow-300">फीस संरचना</a>
+        <a href="#facilities" class="hover:text-yellow-300">सुविधाएं</a>
+        <a href="#news" class="hover:text-yellow-300">सूचनाएं</a>
+        <a href="#gallery" class="hover:text-yellow-300">गैलरी</a>
+        <a href="#contact" class="hover:text-yellow-300">संपर्क</a>
+        <a href="student-login.html" class="hover:text-yellow-300">छात्र पोर्टल</a>
+        <a href="ai-assistant.html" class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full hover:bg-yellow-300 transition">AI सहायक</a>
+        <a href="admin-login.html" class="text-gray-300 hover:text-yellow-300 border border-gray-600 px-3 py-1 rounded-full transition">🔐 Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero flex-1 flex items-center justify-center text-center relative">
+    <div class="overlay absolute inset-0"></div>
+    <div class="relative z-10">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4">J.R.C. इंटर कॉलेज, हरही बाज़ार बस्ती में आपका स्वागत है</h1>
+      <p class="text-lg md:text-xl mb-6">युवा मन को पोषित करना | शिक्षा में उत्कृष्टता | आधुनिक शिक्षण वातावरण</p>
+      <!-- <a href="assignment.html" class="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold text-lg hover:bg-yellow-500 transition">Go to Assignment Section</a> -->
+    </div>
+  </section>
+
+  <!-- 🖼️ Poster Section -->
+  <section class="py-10 bg-white fade-in">
+    <div class="max-w-15xl mx-auto px-4">
+      <img src="495172015_122099557628862742_8466078802183725771_n.jpg"
+      class="poster-img rounded-2xl shadow-2xl border-4 border-blue-600 w-full">
+      <p class="text-center text-gray-700 mt-4 text-lg font-semibold fade-in">J.R.C. इंटर कॉलेज, हरही बाज़ार बस्ती का आधिकारिक पोस्टर</p>
+    </div>
+  </section>
+
+  <!-- ताज़ा सूचनाएं (News & Announcements) -->
+  <section id="news" class="py-12 px-6 md:px-20 bg-blue-50 text-gray-800 fade-in">
+    <h2 class="text-4xl font-bold text-center mb-8 text-blue-700 fade-in">ताज़ा सूचनाएं</h2>
+    <div id="newsContainer" class="max-w-4xl mx-auto space-y-4">
+      <p class="text-center text-gray-600">लोड हो रहा है...</p>
+    </div>
+  </section>
+
+  <!-- इवेंट गैलरी (Gallery) -->
+  <section id="gallery" class="py-16 px-6 md:px-20 bg-white text-gray-800 fade-in">
+    <h2 class="text-4xl font-bold text-center mb-10 text-blue-600 fade-in">इवेंट गैलरी</h2>
+    <p class="text-center text-gray-600 mb-8">स्कूल के कार्यक्रमों और खास पलों की तस्वीरें। आप यहाँ अपनी फोटो जोड़ सकते हैं।</p>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+      <div class="aspect-square bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-sm"><img src="teachers.jpeg"></div>
+      <div class="aspect-square bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-sm"><img src="teacher stu.jpeg"></div>
+      <div class="aspect-square bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-sm"><img src="stu.jpeg"></div>
+      <div class="aspect-square bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-sm">फोटो 4</div>
+      <div class="aspect-square bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-sm">फोटो 5</div>
+      <div class="aspect-square bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-sm">फोटो 6</div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 px-6 md:px-20 bg-gray-50 text-gray-800 fade-in">
+    <h2 class="text-4xl font-bold text-center mb-10 text-blue-600 fade-in">हमारे स्कूल के बारे में</h2>
+    <p class="text-lg leading-relaxed text-center max-w-4xl mx-auto fade-in">
+      JRC स्कूल, हरही बाज़ार बस्ती, विश्व-स्तरीय शिक्षा प्रदान करने के लिए समर्पित है जो अकादमिक उत्कृष्टता को मूल्यों और रचनात्मकता के साथ मिलाती है। 
+      हमारा संस्थान सर्वांगीण विकास पर ध्यान केंद्रित करता है—यह सुनिश्चित करता है कि छात्र शिक्षा, खेल, कला और नेतृत्व में उत्कृष्ट प्रदर्शन करें। 
+      आधुनिक कक्षाओं, कंप्यूटर लैब और अनुभवी शिक्षकों के साथ, JRC स्कूल नई पीढ़ी के लिए सीखने और विकास का एक प्रतीक है।
+      <br><br>
+
+
+    </p>
+  </section>
+
+  <!-- Facilities Section -->
+  <section id="facilities" class="py-16 px-6 md:px-20 bg-gray-100 text-gray-800 fade-in">
+    <h2 class="text-4xl font-bold text-center mb-10 text-blue-600 fade-in">हमारी सुविधाएं</h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="facility-card bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
+        <h3 class="text-2xl font-semibold mb-3 text-blue-700">स्मार्ट कक्षाएं</h3>
+        <p>शिक्षा को मजेदार और आकर्षक बनाने के लिए इंटरैक्टिव डिजिटल शिक्षण वातावरण।</p>
+      </div>
+      <div class="facility-card bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
+        <h3 class="text-2xl font-semibold mb-3 text-blue-700">कंप्यूटर लैब</h3>
+        <p>डिजिटल साक्षरता बढ़ाने के लिए नवीनतम तकनीक से सुसज्जित आधुनिक कंप्यूटर लैब।</p>
+      </div>
+      <div class="facility-card bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
+        <h3 class="text-2xl font-semibold mb-3 text-blue-700">खेल और गतिविधियां</h3>
+        <p>विभिन्न खेलों और पाठ्येतर गतिविधियों के माध्यम से शारीरिक फिटनेस और टीम वर्क को प्रोत्साहित करना।</p>
+      </div>
+      <div class="facility-card bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
+        <h3 class="text-2xl font-semibold mb-3 text-blue-700">पुस्तकालय</h3>
+        <p>जिज्ञासा और आजीवन सीखने को प्रेरित करने के लिए पुस्तकों और संसाधनों का विशाल संग्रह।</p>
+      </div>
+      <div class="facility-card bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
+        <h3 class="text-2xl font-semibold mb-3 text-blue-700">अनुभवी शिक्षक</h3>
+        <p>छात्रों के अकादमिक और नैतिक विकास को पोषित करने के लिए प्रतिबद्ध अत्यधिक योग्य शिक्षक।</p>
+      </div>
+      <div class="facility-card bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
+        <h3 class="text-2xl font-semibold mb-3 text-blue-700">सुरक्षित परिसर</h3>
+        <p>हमारा स्कूल प्रत्येक छात्र के लिए एक सुरक्षित, देखभाल करने वाला और समावेशी वातावरण प्रदान करता है।</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🏆 Achievements Section -->
+  <section class="py-16 px-6 md:px-20 bg-blue-50 text-gray-800 fade-in">
+    <h2 class="text-4xl font-bold text-center mb-10 text-blue-700 fade-in">हमारी उपलब्धियां</h2>
+    <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto items-center">
+      
+      <!-- Text Side -->
+      <div class="achievement-text">
+        <h3 class="text-2xl font-semibold mb-4 text-blue-600">🏆 खो-खो में उत्कृष्टता</h3>
+        <p class="text-lg leading-relaxed">
+          J.R.C. स्कूल, हरही बाज़ार बस्ती ने खेलों में – खासकर <b>खो-खो</b> में – बहुत बड़ी सफलता हासिल की है।
+          हमारे मेहनती छात्रों ने गर्व से कई <b>जिला-स्तरीय और राज्य-स्तरीय ट्रॉफ़ियाँ</b> जीती हैं, 
+          जिससे हमारा स्कूल स्थानीय टूर्नामेंट में एक जाना-पहचाना नाम बन गया है।
+        </p>
+        <p class="mt-4 text-lg leading-relaxed">
+          टीम वर्क, प्रशिक्षण और अनुशासन के साथ, हमारी खो-खो टीम हर साल हमें गर्व महसूस कराती रहती है। 
+          खो-खो के अलावा, हमारे छात्र एथलेटिक्स, कबड्डी और सांस्कृतिक कार्यक्रमों में भी हिस्सा लेते हैं, जो शिक्षा और खेल भावना का एक सही संतुलन दिखाता है।
+        </p>
+        <br><br>
+
+      </div>
+
+      <!-- Image Side -->
+      <div class="achievement-image rounded-2xl overflow-hidden shadow-lg card-hover">
+        <img src="https://scontent-del2-2.xx.fbcdn.net/v/t39.30808-6/506406472_122120494718862742_5824950341834509681_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=1WsH2mULUp0Q7kNvwF1xINp&_nc_oc=Adnc2keb5u4K9DNPvTy1TlVjl1xTEDSeZNrnVlVyVAG5rqD2U-wqHT9W_hUvWH_FJkG88XT_tYA0QuB_hL4Zja4x&_nc_zt=23&_nc_ht=scontent-del2-2.xx&_nc_gid=AczD8_uboPqWTv6gKXJIXA&oh=00_AfeeMvQeaiYX57EbKvBiqhcmlcJ0lo_DgCEzqtCwpE8rAA&oe=690BE8F2" 
+             alt="JRC School Kho-Kho Team" class="w-full h-full object-cover">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- अक्सर पूछे जाने वाले प्रश्न (FAQ) -->
+  <section id="faq" class="py-16 px-6 md:px-20 bg-white text-gray-800 fade-in">
+    <h2 class="text-4xl font-bold text-center mb-10 text-blue-600 fade-in">अक्सर पूछे जाने वाले प्रश्न</h2>
+    <div class="max-w-3xl mx-auto space-y-4">
+      <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+        <h3 class="font-semibold text-blue-800 mb-2">प्रवेश कब खुलते हैं?</h3>
+        <p class="text-gray-700">नर्सरी से कक्षा 12 तक प्रवेश सीट की उपलब्धता के अनुसार खुले रहते हैं। प्रवेश पृष्ठ पर ऑनलाइन पूछताछ भर सकते हैं।</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+        <h3 class="font-semibold text-blue-800 mb-2">स्कूल का समय क्या है?</h3>
+        <p class="text-gray-700">नियमित समय सुबह 8:00 बजे से दोपहर 2:00 बजे तक (सोमवार–शनिवार)। मौसम के अनुसार बदल सकता है।</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+        <h3 class="font-semibold text-blue-800 mb-2">फीस के बारे में जानकारी कहाँ मिलेगी?</h3>
+        <p class="text-gray-700">फीस संरचना पृष्ठ पर अनुमानित फीस और कैलकुलेटर उपलब्ध है। सटीक जानकारी के लिए स्कूल कार्यालय से संपर्क करें।</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+        <h3 class="font-semibold text-blue-800 mb-2">कौन से दस्तावेज़ चाहिए?</h3>
+        <p class="text-gray-700">जन्म प्रमाणपत्र, पिछली कक्षा की अंक पत्रिका, स्थानांतरण प्रमाणपत्र, आधार कार्ड और पासपोर्ट साइज़ फोटो। प्रवेश पृष्ठ पर पूरी सूची है।</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- अभिभावक संदेश (Testimonials) -->
+  <section id="testimonials" class="py-16 px-6 md:px-20 bg-blue-50 text-gray-800 fade-in">
+    <h2 class="text-4xl font-bold text-center mb-10 text-blue-700 fade-in">अभिभावक संदेश</h2>
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div class="bg-white rounded-2xl p-6 shadow-lg border-l-4 border-blue-600">
+        <p class="text-gray-700 italic mb-4">"बच्चे को पढ़ाई के साथ अनुशासन और संस्कार मिल रहे हैं। शिक्षकों का व्यवहार बहुत अच्छा है।"</p>
+        <p class="font-semibold text-blue-800">— अभिभावक</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-lg border-l-4 border-blue-600">
+        <p class="text-gray-700 italic mb-4">"खेल और पढ़ाई दोनों पर ध्यान दिया जाता है। स्कूल का माहौल साफ और सुरक्षित है।"</p>
+        <p class="font-semibold text-blue-800">— अभिभावक</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- शैक्षणिक कैलेंडर -->
+  <section id="calendar" class="py-16 px-6 md:px-20 bg-white text-gray-800 fade-in">
+    <h2 class="text-4xl font-bold text-center mb-10 text-blue-600 fade-in">शैक्षणिक कैलेंडर</h2>
+    <div class="max-w-2xl mx-auto bg-gray-50 rounded-2xl p-6 border border-gray-200">
+      <ul class="space-y-3 text-gray-700">
+        <li class="flex justify-between"><span>सत्र शुरू</span><span>अप्रैल</span></li>
+        <li class="flex justify-between"><span>मध्यावधि परीक्षा</span><span>सितंबर</span></li>
+        <li class="flex justify-between"><span>दीपावली छुट्टियाँ</span><span>अक्टूबर–नवंबर</span></li>
+        <li class="flex justify-between"><span>अर्धवार्षिक परीक्षा</span><span>दिसंबर</span></li>
+        <li class="flex justify-between"><span>वार्षिक परीक्षा</span><span>फरवरी–मार्च</span></li>
+        <li class="flex justify-between"><span>सत्र समाप्ति</span><span>मार्च</span></li>
+      </ul>
+      <p class="text-sm text-gray-500 mt-4 text-center">तारीखें बदल सकती हैं। सटीक जानकारी के लिए स्कूल से संपर्क करें।</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-blue-700 text-white fade-in">
+    <h2 class="text-4xl font-bold mb-6 text-center fade-in">हमसे संपर्क करें</h2>
+    <div class="max-w-2xl mx-auto mb-10 text-center">
+      <p class="text-lg mb-2">📍 हरही बाज़ार, बस्ती, उत्तर प्रदेश</p>
+      <p class="text-lg mb-2">📞 फोन: +91 8874543973, +91 9219998118</p>
+      <p class="text-lg mb-4">✉️ ईमेल: jrcintercollegebasti1@gmail.com</p>
+    </div>
+    <div class="max-w-md mx-auto bg-white/10 rounded-2xl p-6 backdrop-blur">
+      <h3 class="text-xl font-semibold mb-4 text-center">पूछताछ भेजें</h3>
+      <form id="contactForm" class="space-y-4">
+        <input type="text" name="name" placeholder="आपका नाम" required class="w-full px-4 py-2 rounded-lg bg-white/90 text-gray-800 placeholder-gray-500">
+        <input type="tel" name="phone" placeholder="मोबाइल नंबर" required class="w-full px-4 py-2 rounded-lg bg-white/90 text-gray-800 placeholder-gray-500">
+        <input type="email" name="email" placeholder="ईमेल (वैकल्पिक)" class="w-full px-4 py-2 rounded-lg bg-white/90 text-gray-800 placeholder-gray-500">
+        <textarea name="message" rows="3" placeholder="आपका संदेश" required class="w-full px-4 py-2 rounded-lg bg-white/90 text-gray-800 placeholder-gray-500"></textarea>
+        <button type="submit" class="w-full bg-yellow-400 text-blue-900 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">भेजें</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-center text-white py-6">
+    <p>© 2025 JRC स्कूल, हरही बाज़ार बस्ती | शिवमणि सिंह द्वारा डिज़ाइन किया गया</p>
+  </footer>
+
+  <!-- JavaScript Files -->
+  <script src="js/main.js"></script>
+  <script src="js/form-handler.js"></script>
+</body>
+</html>

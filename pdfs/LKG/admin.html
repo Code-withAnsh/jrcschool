@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | JRC स्कूल</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .status-pending { background-color: #fef3c7; color: #92400e; }
+    .status-contacted { background-color: #dbeafe; color: #1e40af; }
+    .status-admitted { background-color: #d1fae5; color: #065f46; }
+    .status-rejected { background-color: #fee2e2; color: #991b1b; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="bg-blue-900 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="bg-yellow-400 text-blue-900 font-extrabold rounded-full h-10 w-10 flex items-center justify-center text-lg">J</div>
+          <div>
+            <h1 class="text-xl font-bold">JRC Admin Portal</h1>
+            <p class="text-xs text-gray-200">प्रवेश प्रबंधन</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <span class="text-sm text-gray-300" id="adminName"></span>
+          <button id="refreshBtn" class="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-lg text-sm font-medium transition">
+            🔄 Refresh
+          </button>
+          <button id="logoutBtn" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg text-sm font-medium transition">
+            🚪 Logout
+          </button>
+          <a href="school.html" class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-yellow-300 transition">
+            🏠 Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="text-sm text-gray-600 mb-1">कुल प्रवेश</div>
+        <div class="text-3xl font-bold text-blue-600" id="totalCount">0</div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="text-sm text-gray-600 mb-1">Pending</div>
+        <div class="text-3xl font-bold text-yellow-600" id="pendingCount">0</div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="text-sm text-gray-600 mb-1">Contacted</div>
+        <div class="text-3xl font-bold text-blue-600" id="contactedCount">0</div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="text-sm text-gray-600 mb-1">Admitted</div>
+        <div class="text-3xl font-bold text-green-600" id="admittedCount">0</div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+      <div class="flex flex-wrap items-center gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Status Filter</label>
+          <select id="statusFilter" class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">सभी</option>
+            <option value="pending">Pending</option>
+            <option value="contacted">Contacted</option>
+            <option value="admitted">Admitted</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+          <input type="text" id="searchInput" placeholder="नाम या मोबाइल..." class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div class="flex items-end">
+          <button id="clearFilters" class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg text-sm font-medium transition">
+            Clear Filters
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="text-center py-12 hidden">
+      <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      <p class="mt-4 text-gray-600">Loading...</p>
+    </div>
+
+    <!-- Admissions Table -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student Name</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Class</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mobile</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admissionsTableBody" class="bg-white divide-y divide-gray-200">
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+      <div id="noData" class="text-center py-12 text-gray-500 hidden">
+        कोई डेटा नहीं मिला
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination" class="mt-6 flex justify-center items-center space-x-2 hidden">
+      <button id="prevPage" class="px-4 py-2 bg-white border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+        Previous
+      </button>
+      <span id="pageInfo" class="px-4 py-2 text-sm text-gray-700"></span>
+      <button id="nextPage" class="px-4 py-2 bg-white border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+        Next
+      </button>
+    </div>
+
+    <!-- सूचनाएं प्रबंधन (News) -->
+    <section class="mt-12 pt-8 border-t">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">ताज़ा सूचनाएं प्रबंधन</h2>
+      <div class="bg-white rounded-lg shadow p-6 mb-6">
+        <button id="addNewsBtn" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition">
+          + नई सूचना जोड़ें
+        </button>
+      </div>
+      <div id="newsListContainer" class="space-y-3">
+        <p class="text-gray-500 text-center py-4">लोड हो रहा है...</p>
+      </div>
+    </section>
+
+    <!-- छात्र परिणाम / फीस (Student Result & Fee) -->
+    <section class="mt-12 pt-8 border-t">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">छात्र परिणाम व फीस जोड़ें</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-lg font-semibold text-blue-700 mb-4">परीक्षा परिणाम जोड़ें</h3>
+          <form id="addResultForm" class="space-y-3">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">छात्र चुनें</label>
+              <select id="resultStudentId" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">-- छात्र चुनें --</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">परीक्षा का नाम</label>
+              <input type="text" id="resultExamName" required class="w-full border rounded-lg px-3 py-2" placeholder="जैसे अर्धवार्षिक 2024">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">सत्र (वैकल्पिक)</label>
+              <input type="text" id="resultSession" class="w-full border rounded-lg px-3 py-2" placeholder="2024-25">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">कुल अंक</label>
+                <input type="number" id="resultTotalMarks" class="w-full border rounded-lg px-3 py-2" placeholder="100">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">प्राप्त अंक</label>
+                <input type="number" id="resultObtainedMarks" class="w-full border rounded-lg px-3 py-2" placeholder="85">
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">प्रतिशत</label>
+                <input type="number" id="resultPercentage" class="w-full border rounded-lg px-3 py-2" placeholder="85" step="0.01">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">ग्रेड</label>
+                <input type="text" id="resultGrade" class="w-full border rounded-lg px-3 py-2" placeholder="A">
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">टिप्पणी (वैकल्पिक)</label>
+              <input type="text" id="resultRemarks" class="w-full border rounded-lg px-3 py-2" placeholder="उत्तीर्ण">
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition">परिणाम जोड़ें</button>
+          </form>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-lg font-semibold text-blue-700 mb-4">फीस रिकॉर्ड जोड़ें</h3>
+          <form id="addFeeForm" class="space-y-3">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">छात्र चुनें</label>
+              <select id="feeStudentId" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">-- छात्र चुनें --</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">विवरण</label>
+              <input type="text" id="feeDescription" class="w-full border rounded-lg px-3 py-2" placeholder="वार्षिक फीस 2024-25">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">कुल राशि (₹)</label>
+                <input type="number" id="feeAmount" required class="w-full border rounded-lg px-3 py-2" placeholder="15000" min="0">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">दी गई राशि (₹)</label>
+                <input type="number" id="feePaid" class="w-full border rounded-lg px-3 py-2" placeholder="0" min="0" value="0">
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">सत्र (वैकल्पिक)</label>
+              <input type="text" id="feeSession" class="w-full border rounded-lg px-3 py-2" placeholder="2024-25">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">देय तारीख (वैकल्पिक)</label>
+              <input type="date" id="feeDueDate" class="w-full border rounded-lg px-3 py-2">
+            </div>
+            <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-lg font-medium hover:bg-green-700 transition">फीस जोड़ें</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- News Add/Edit Modal -->
+  <div id="newsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 flex">
+    <div class="bg-white rounded-lg p-6 max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto">
+      <h3 class="text-xl font-bold mb-4" id="newsModalTitle">नई सूचना जोड़ें</h3>
+      <form id="newsForm">
+        <input type="hidden" id="newsId">
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-2">शीर्षक</label>
+          <input type="text" id="newsTitle" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="सूचना का शीर्षक">
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-2">विषय / विवरण</label>
+          <textarea id="newsContent" required rows="4" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="सूचना की जानकारी"></textarea>
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-2">प्रकार</label>
+          <select id="newsType" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="notice">सूचना</option>
+            <option value="holiday">छुट्टी</option>
+            <option value="exam">परीक्षा</option>
+            <option value="event">कार्यक्रम</option>
+            <option value="general">सामान्य</option>
+          </select>
+        </div>
+        <div class="flex justify-end space-x-3">
+          <button type="button" id="cancelNews" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg">रद्द करें</button>
+          <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">सेव करें</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Status Update Modal -->
+  <div id="statusModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 flex">
+    <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+      <h3 class="text-xl font-bold mb-4">Update Status</h3>
+      <form id="statusForm">
+        <input type="hidden" id="admissionId">
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+          <select id="statusSelect" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <option value="pending">Pending</option>
+            <option value="contacted">Contacted</option>
+            <option value="admitted">Admitted</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-2">Notes (Optional)</label>
+          <textarea id="statusNotes" rows="3" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Add notes..."></textarea>
+        </div>
+        <div class="flex justify-end space-x-3">
+          <button type="button" id="cancelStatus" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg">
+            Cancel
+          </button>
+          <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
+            Update
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    // Show admin name if authenticated and setup page monitoring
+    if (AdminAuth.isAuthenticated()) {
+      const session = AdminAuth.getSession();
+      if (session) {
+        document.getElementById('adminName').textContent = `Welcome, ${session.username}`;
+      }
+      
+      // Monitor if user navigates away from admin page
+      let isAdminPage = true;
+      
+      // Check on every navigation
+      window.addEventListener('beforeunload', () => {
+        AdminAuth.logout(true); // Silent logout
+      });
+      
+      // Monitor URL changes
+      const observer = new MutationObserver(() => {
+        if (!window.location.pathname.includes('admin.html')) {
+          isAdminPage = false;
+          AdminAuth.logout();
+        }
+      });
+      
+      // Also check periodically
+      setInterval(() => {
+        if (!window.location.pathname.includes('admin.html') && isAdminPage) {
+          isAdminPage = false;
+          AdminAuth.logout();
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

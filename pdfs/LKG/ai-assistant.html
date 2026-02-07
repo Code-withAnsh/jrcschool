@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI सहायक | JRC स्कूल, हरही बाज़ार बस्ती</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white min-h-screen flex flex-col">
+  <header class="bg-blue-900 bg-opacity-80 backdrop-filter backdrop-blur">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <div class="flex items-center space-x-3">
+        <div class="bg-yellow-400 text-blue-900 font-extrabold rounded-full h-10 w-10 flex items-center justify-center text-lg">J</div>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest">J.R.C. Inter College</p>
+          <p class="text-xs text-gray-200">Harahi Bazar, Basti (U.P.)</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="school.html" class="hover:text-yellow-300">होम</a>
+        <a href="about.html" class="hover:text-yellow-300">हमारे बारे में</a>
+        <a href="admissions.html" class="hover:text-yellow-300">प्रवेश</a>
+        <a href="fees.html" class="hover:text-yellow-300">फीस संरचना</a>
+        <a href="student-login.html" class="hover:text-yellow-300">छात्र पोर्टल</a>
+        <a href="ai-assistant.html" class="text-yellow-300 font-semibold">AI सहायक</a>
+        <a href="admin-login.html" class="text-gray-300 hover:text-yellow-300 border border-gray-600 px-3 py-1 rounded-full transition">🔐 Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1 flex items-center justify-center px-4 py-8">
+    <div class="max-w-5xl w-full grid md:grid-cols-3 gap-6">
+      <section class="md:col-span-1 bg-white bg-opacity-10 border border-blue-300 rounded-2xl p-5 space-y-4 fade-in card-hover">
+        <h1 class="text-2xl font-extrabold text-yellow-300 mb-2 fade-in">JRC AI सहायक</h1>
+        <p class="text-sm text-blue-100">
+          प्रवेश, फीस, सुविधाएं, समय, या J.R.C. इंटर कॉलेज से संबंधित किसी भी सामान्य प्रश्न के बारे में पूछें।
+        </p>
+        <div class="space-y-2 text-xs text-blue-100">
+          <p class="font-semibold text-yellow-200">इस तरह पूछने का प्रयास करें:</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>"प्रवेश प्रक्रिया क्या है?"</li>
+            <li>"JRC स्कूल के बारे में बताएं।"</li>
+            <li>"कक्षा 8 की फीस क्या है?"</li>
+            <li>"स्कूल का समय और संपर्क नंबर?"</li>
+          </ul>
+        </div>
+        <p class="text-[11px] text-blue-100 mt-2">
+          नोट: यह सहायक वर्तमान में एक स्मार्ट नियम-आधारित प्रणाली का उपयोग करता है। आप बाद में इसे वास्तविक AI API (OpenAI, आदि) से जोड़ सकते हैं
+          इस पृष्ठ के अंदर कोड टिप्पणियों का उपयोग करके।
+        </p>
+      </section>
+
+      <section class="md:col-span-2 bg-white bg-opacity-10 border border-blue-300 rounded-2xl flex flex-col fade-in">
+        <div id="chatWindow" class="flex-1 overflow-y-auto p-4 space-y-3 text-sm">
+          <div class="flex items-start space-x-2">
+            <div class="bg-yellow-400 text-blue-900 rounded-full h-7 w-7 flex items-center justify-center text-xs font-bold">AI</div>
+            <div class="bg-white bg-opacity-10 rounded-2xl px-3 py-2 max-w-xs">
+              <p>नमस्ते! मैं JRC AI सहायक हूं। आज मैं आपकी कैसे मदद कर सकता हूं?</p>
+            </div>
+          </div>
+        </div>
+        <form id="chatForm" class="border-t border-blue-400 bg-blue-900 bg-opacity-60 flex items-center px-3 py-2 space-x-2">
+          <input
+            id="userInput"
+            type="text"
+            placeholder="अपना प्रश्न यहाँ टाइप करें..."
+            class="flex-1 bg-transparent border border-blue-300 rounded-full px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-300"
+            autocomplete="off"
+          />
+          <button
+            type="submit"
+            class="btn-pulse bg-yellow-400 text-blue-900 px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-300 transition"
+          >
+            भेजें
+          </button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="bg-blue-950 text-center text-blue-100 py-4 text-xs">
+    <p>© 2025 JRC स्कूल, हरही बाज़ार बस्ती | शिवमणि सिंह द्वारा डिज़ाइन किया गया</p>
+  </footer>
+
+  <!-- JavaScript Files -->
+  <script src="js/main.js"></script>
+  <script src="js/ai-assistant.js"></script>
+</body>
+</html>
+<script>
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex items-start space-x-2 chat-message ' + (sender === 'user' ? 'justify-end text-right user' : 'ai');
+
+      const bubble = document.createElement('div');
+      bubble.className =
+        'rounded-2xl px-3 py-2 max-w-xs text-sm ' +
+        (sender === 'user'
+          ? 'bg-yellow-300 text-blue-900 order-2'
+          : 'bg-white bg-opacity-10 text-white');
+
+      bubble.textContent = text;
+
+      if (sender === 'user') {
+        wrapper.appendChild(bubble);
+        const avatar = document.createElement('div');
+        avatar.className =
+          'bg-blue-200 text-blue-900 rounded-full h-7 w-7 flex items-center justify-center text-xs font-bold order-1';
+        avatar.textContent = 'आप';
+        wrapper.appendChild(avatar);
+      } else {
+        const avatar = document.createElement('div');
+        avatar.className =
+          'bg-yellow-400 text-blue-900 rounded-full h-7 w-7 flex items-center justify-center text-xs font-bold';
+        avatar.textContent = 'AI';
+        wrapper.appendChild(avatar);
+        wrapper.appendChild(bubble);
+      }
+
+      chatWindow.appendChild(wrapper);
+      setTimeout(() => {
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+      }, 100);
+    }
+
+    function ruleBasedAnswer(question) {
+      const q = question.toLowerCase();
+
+      if (q.includes('admission') || q.includes('admissions') || q.includes('प्रवेश')) {
+        return 'नर्सरी से कक्षा 12 तक प्रवेश सीट की उपलब्धता के आधार पर खुले हैं। प्रक्रिया में फॉर्म भरना, दस्तावेज़ जमा करना, और यदि लागू हो तो एक बातचीत/प्रवेश परीक्षा शामिल है। आप प्रवेश पृष्ठ पर एक पूछताछ फॉर्म भी जमा कर सकते हैं।';
+      }
+
+      if (q.includes('fee') || q.includes('fees') || q.includes('फीस')) {
+        return 'हमारी फीस संरचना कक्षा और वैकल्पिक परिवहन पर निर्भर करती है। कृपया अनुमानित वार्षिक फीस के लिए फीस संरचना पृष्ठ देखें और अनुमान के लिए AI फीस सलाहकार कैलकुलेटर का उपयोग करें।';
+      }
+
+      if (q.includes('timing') || q.includes('time') || q.includes('समय')) {
+        return 'नियमित स्कूल का समय आमतौर पर सुबह 8:00 बजे से दोपहर 2:00 बजे तक (सोमवार से शनिवार) होता है। सटीक समय मौसम और कक्षा के अनुसार भिन्न हो सकता है। नवीनतम समयसारणी के लिए कृपया स्कूल कार्यालय से संपर्क करें।';
+      }
+
+      if (q.includes('contact') || q.includes('phone') || q.includes('mobile') || q.includes('number')) {
+        return 'आप J.R.C. इंटर कॉलेज से +91 8874543973 पर संपर्क कर सकते हैं या हरही बाज़ार, बस्ती, उत्तर प्रदेश जा सकते हैं।';
+      }
+
+      if (q.includes('about') || q.includes('school') || q.includes('jrc')) {
+        return 'J.R.C. Inter College, Harahi Bazar Basti, is focused on holistic development with smart classrooms, computer labs, sports, and experienced faculty. Visit the About page for vision, mission, and principal’s message.';
+      }
+
+      if (q.includes('facility') || q.includes('facilities') || q.includes('sports') || q.includes('lab')) {
+        return 'स्कूल स्मार्ट कक्षाएं, एक आधुनिक कंप्यूटर लैब, एक समृद्ध पुस्तकालय, सुरक्षित परिसर, और खो-खो, एथलेटिक्स, कबड्डी और सांस्कृतिक कार्यक्रमों जैसे खेलों में सक्रिय भागीदारी प्रदान करता है।';
+      }
+
+      // Default fallback
+      return 'मुझे इस प्रश्न के बारे में पूरी तरह से यकीन नहीं है, लेकिन आप संबंधित पृष्ठ (हमारे बारे में, प्रवेश, फीस, या संपर्क) देख सकते हैं या विस्तृत जानकारी के लिए स्कूल कार्यालय को +91 8874543973 पर कॉल कर सकते हैं।';
+    }
+
+    chatForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const text = userInput.value.trim();
+      if (!text) return;
+
+      addMessage(text, 'user');
+      userInput.value = '';
+
+      // For now, use rule-based responses:
+      const answer = ruleBasedAnswer(text);
+      addMessage(answer, 'ai');
+
+      // To connect a real AI model later:
+      // 1. Create a backend endpoint (e.g. /api/ask) in Node/Express, Python, etc.
+      // 2. From here, call:
+      //    const response = await fetch('/api/ask', { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: text }) });
+      //    const data = await response.json();
+      //    addMessage(data.answer, 'ai');
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
+
